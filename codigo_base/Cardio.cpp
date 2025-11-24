@@ -34,7 +34,7 @@ int Cardio::getTipo() const {
 
 // Getter de duração
 int Cardio::getDuracao() const {
-    return 0; // Implementar
+    return duracao;
 }
 
 // Getter de calorias por minuto
