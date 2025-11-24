@@ -39,5 +39,5 @@ int Cardio::getDuracao() const {
 
 // Getter de calorias por minuto
 double Cardio::getCaloriasPorMinuto() const {
-    return 0.0; // Implementar
+    return caloriasPorMinuto;
 }
