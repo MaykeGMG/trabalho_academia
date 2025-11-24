@@ -14,7 +14,7 @@ Forca::Forca(int id, std::string nome, bool ativo, double carga, int series, int
 
 // Exibir detalhes do exercício
 void Forca::exibirDetalhes() const {
-    // Implementar
+    std::cout << "Tipo: " << getTipo() << "\nNome: " << getNome() << "\nID do exercício: " << getId() << "\nStatus: " << isAtivo() << "\nCarga do exercício: " << getCarga() << "\nQuantidade de séries: " << getSeries() << "\nQuantidade de repetições por série: " << getRepeticoes() << "\nTempo de descanso entre séries: " << getTempoDescanso() << " segundos" << std::endl;
 }
 
 // Calcular tempo estimado (em minutos)
