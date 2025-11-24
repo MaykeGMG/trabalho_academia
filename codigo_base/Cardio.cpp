@@ -3,8 +3,7 @@
 
 // Construtor para novos cadastros
 Cardio::Cardio(std::string nome, int duracao, double caloriasPorMinuto) 
-    : Exercicio(nome), duracao(duracao){
-    this->caloriasPorMinuto = caloriasPorMinuto*duracao;
+    : Exercicio(nome), duracao(duracao), caloriasPorMinuto(caloriasPorMinuto){
 }
 
 // Construtor para leitura de arquivo
