@@ -20,7 +20,7 @@ void Cardio::exibirDetalhes() const {
 
 // Calcular tempo estimado (duração em minutos)
 double Cardio::calcularTempoEstimado() const {
-    return 0.0; // Implementar
+    return duracao;
 }
 
 // Calcular calorias gastas
