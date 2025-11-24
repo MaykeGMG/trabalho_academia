@@ -29,22 +29,22 @@ double Forca::calcularCaloriasGastas() const {
 
 // Retornar tipo do exercício (2 = Força)
 int Forca::getTipo() const {
-    return 0; // Implementar
+    return 2;
 }
 
 // Getters
 double Forca::getCarga() const { 
-    return 0.0; // Implementar
+    return carga;
 }
 
 int Forca::getSeries() const { 
-    return 0; // Implementar
+    return series;
 }
 
 int Forca::getRepeticoes() const { 
-    return 0; // Implementar
+    return repeticoes;
 }
 
 int Forca::getTempoDescanso() const { 
-    return 0; // Implementar
+    return tempoDescanso;
 }
