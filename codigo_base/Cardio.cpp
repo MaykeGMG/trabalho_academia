@@ -24,7 +24,7 @@ double Cardio::calcularTempoEstimado() const {
 
 // Calcular calorias gastas
 double Cardio::calcularCaloriasGastas() const {
-    return 0.0; // Implementar
+    return (duracao*caloriasPorMinuto);
 }
 
 // Retornar tipo do exercício (1 = Cardio)
