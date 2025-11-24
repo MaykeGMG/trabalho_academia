@@ -3,8 +3,7 @@
 
 // Construtor para novos cadastros
 Forca::Forca(std::string nome, double carga, int series, int repeticoes, int tempoDescanso)
-    : Exercicio(nome) {
-    // Implementar
+    : Exercicio(nome), carga(carga), series(series), repeticoes(repeticoes), tempoDescanso(tempoDescanso) {
 }
 
 // Construtor para leitura de arquivo
