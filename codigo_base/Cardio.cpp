@@ -29,7 +29,7 @@ double Cardio::calcularCaloriasGastas() const {
 
 // Retornar tipo do exercício (1 = Cardio)
 int Cardio::getTipo() const {
-    return 0; // Implementar
+    return 1; // Implementar
 }
 
 // Getter de duração
