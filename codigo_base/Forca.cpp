@@ -19,12 +19,12 @@ void Forca::exibirDetalhes() const {
 
 // Calcular tempo estimado (em minutos)
 double Forca::calcularTempoEstimado() const {
-    return ((series*repeticoes*3)+(series*tempoDescanso))/60; // Implementar
+    return ((series*repeticoes*3)+(series*tempoDescanso))/60;
 }
 
 // Calcular calorias gastas
 double Forca::calcularCaloriasGastas() const {
-    return 0.0; // Implementar
+    return series*repeticoes*carga*0.15;
 }
 
 // Retornar tipo do exercício (2 = Força)
