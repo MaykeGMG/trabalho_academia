@@ -19,7 +19,7 @@ void Forca::exibirDetalhes() const {
 
 // Calcular tempo estimado (em minutos)
 double Forca::calcularTempoEstimado() const {
-    return 0.0; // Implementar
+    return ((series*repeticoes*3)+(series*tempoDescanso))/60; // Implementar
 }
 
 // Calcular calorias gastas
