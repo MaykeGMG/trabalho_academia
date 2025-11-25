@@ -26,7 +26,16 @@ void Ficha::adicionarExercicio(Exercicio* exercicio) {
 
 // Exibir ficha completa com exercícios e totais
 void Ficha::exibirFicha() const {
-    // Implementar
+
+    std::cout << nome << ":\n";
+    double time = 0;
+
+    for (const auto& exercicio : exercicios){
+        std::cout << exercicio->getNome() << std::endl;
+        time += exercicio->calcularTempoEstimado();
+    }
+
+    std::cout << "Tempo estimado de execução do treino: " << time << std::endl;
 }
 
 // Calcular tempo total da ficha
