@@ -62,15 +62,20 @@ double Ficha::calcularCaloriasTotais() const {
 
 // Getters
 int Ficha::getId() const { 
-    return 0; // Implementar
+    return id;
 }
 
 std::string Ficha::getNome() const { 
-    return ""; // Implementar
+    return nome;
 }
 
 const std::vector<Exercicio*>& Ficha::getExercicios() const {
     static std::vector<Exercicio*> vazio; // Placeholder para compilar
+
+    for (const auto& exercicio : exercicios){
+        vazio.push_back(exercicio);
+    }
+
     return vazio; // Implementar
 }
 
