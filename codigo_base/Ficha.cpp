@@ -20,7 +20,8 @@ Ficha::~Ficha() {
 
 // Adicionar exercício à ficha
 void Ficha::adicionarExercicio(Exercicio* exercicio) {
-    // Implementar
+    exercicios.push_back(exercicio);
+    std::cout << "exercicio adicionado à ficha de treino: " << exercicio->getNome() << std::endl;
 }
 
 // Exibir ficha completa com exercícios e totais
