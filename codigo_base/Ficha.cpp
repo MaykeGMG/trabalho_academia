@@ -5,8 +5,7 @@
 int Ficha::proximoId = 1;
 
 // Construtor para novos cadastros
-Ficha::Ficha(std::string nome) {
-    // Implementar
+Ficha::Ficha(std::string nome) : nome(nome) {
 }
 
 // Construtor para leitura de arquivo
