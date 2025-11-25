@@ -17,7 +17,12 @@ void Historico::exibirHistorico() const {
 // Getter de registros
 const std::vector<RegistroTreino>& Historico::getRegistros() const {
     static std::vector<RegistroTreino> vazio; // Placeholder para compilar
-    return vazio; // Implementar
+
+    for(const auto& registro : registros){
+        vazio.push_back(registro);
+    }
+
+    return vazio;
 }
 
 // Carregar histórico do arquivo
