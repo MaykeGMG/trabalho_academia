@@ -30,7 +30,33 @@ const std::vector<RegistroTreino>& Historico::getRegistros() const {
 
 // Carregar histórico do arquivo
 void Historico::carregarDeArquivo() {
-    // Implementar
+    std::ifstream arquivo("historico.txt");
+    if (!arquivo.is_open()){
+        std::cout << "erro ao tentar ler arquivo!" << std::endl;
+        return;
+    }
+
+    std::string linha;
+
+    while(getline(arquivo, linha)){
+        std::stringstream ss(linha);
+        std::string token;
+
+        RegistroTreino temp;
+
+        getline(ss, temp.dataHora, '|');
+        getline(ss, token, '|');
+        temp.idFicha = stoi(token);
+        getline(ss, temp.nomeFicha, '|');
+        getline(ss, token, '|');
+        temp.tempoTotal = stod(token);
+        getline(ss, token, '|');
+        temp.caloriasTotal = stod(token);
+
+        registros.push_back(temp);
+    }
+
+    arquivo.close();
 }
 
 // Salvar histórico no arquivo
