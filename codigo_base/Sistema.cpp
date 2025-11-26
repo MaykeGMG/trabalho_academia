@@ -14,6 +14,8 @@ Sistema::Sistema() {
 Sistema::~Sistema() {
     salvarDados();
     // Deletar ponteiros de exercicios e fichas
+    for (auto p : exercicios)
+        delete p;
 }
 
 // Carregar dados dos arquivos
@@ -86,7 +88,7 @@ void Sistema::cadastrarExercicio() {
         std::cout << "Tempo de descanso entre séries (em segundos): ";
         std::cin >> tempoDescanso;
 
-        exercicios.push_back(new Forca (nome, carga, series, repeticoes, tempoDescanso));
+        exercicios.push_back(new Forca(nome, carga, series, repeticoes, tempoDescanso));
     }else{
         std::cout << "Valor informado não coresponde a um tipo de exercício!" << std::endl;
     }
