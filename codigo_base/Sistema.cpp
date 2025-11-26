@@ -43,7 +43,17 @@ Exercicio* Sistema::buscarExercicioPorId(int id) {
 
 // Buscar ficha por ID
 Ficha* Sistema::buscarFichaPorId(int id) {
-    return nullptr; // Implementar
+
+    for (Ficha* ficha : fichas){
+
+        if (ficha->getId() == id){
+            return ficha;
+        }
+    }
+
+    std::cout << "Ficha não encontrada ou inexistente!" << std::endl;
+    return nullptr;
+
 }
 
 // Cadastrar novo exercício
@@ -104,6 +114,7 @@ void Sistema::cadastrarExercicio() {
 void Sistema::listarExercicios() {
     
     for (const auto e : exercicios){
+
         if(e->isAtivo()){
             e->exibirDetalhes();
         }
@@ -118,6 +129,7 @@ void Sistema::excluirExercicio() {
     std::cin >> id;
 
     for (Exercicio* e : exercicios){
+
         if(e->getId() == id ){
             e->desativar();
         }
