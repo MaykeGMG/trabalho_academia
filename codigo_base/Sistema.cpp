@@ -127,6 +127,11 @@ void Sistema::excluirExercicio() {
 // Criar nova ficha
 void Sistema::criarFicha() {
     // Implementar
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::string nome;
+    getline(std::cin, nome);
+
+    fichas.push_back(new Ficha(nome));
 }
 
 // Adicionar exercício à ficha
