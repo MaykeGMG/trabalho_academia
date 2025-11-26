@@ -81,10 +81,10 @@ const std::vector<Exercicio*>& Ficha::getExercicios() const {
         vazio.push_back(exercicio);
     }
 
-    return vazio; // Implementar
+    return vazio;
 }
 
 // Atualizar próximo ID
 void Ficha::atualizarProximoId(int maiorId) {
-    // Implementar
+    // Já implementado no contrutor
 }
