@@ -8,8 +8,7 @@ Cardio::Cardio(std::string nome, int duracao, double caloriasPorMinuto)
 
 // Construtor para leitura de arquivo
 Cardio::Cardio(int id, std::string nome, bool ativo, int duracao, double caloriasPorMinuto)
-    : Exercicio(id, nome, ativo) {
-    // Implementar
+    : Exercicio(id, nome, ativo), duracao(duracao), caloriasPorMinuto(caloriasPorMinuto) {
 }
 
 // Exibir detalhes do exercício
