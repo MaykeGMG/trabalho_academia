@@ -20,7 +20,7 @@ Ficha::Ficha(int id, std::string nome) : nome(nome){
 
 // Destrutor (não deletar exercícios, apenas limpar vector)
 Ficha::~Ficha() {
-    // Implementar
+    exercicios.clear();
 }
 
 // Adicionar exercício à ficha
