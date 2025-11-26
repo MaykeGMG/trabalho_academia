@@ -8,8 +8,7 @@ Forca::Forca(std::string nome, double carga, int series, int repeticoes, int tem
 
 // Construtor para leitura de arquivo
 Forca::Forca(int id, std::string nome, bool ativo, double carga, int series, int repeticoes, int tempoDescanso)
-    : Exercicio(id, nome, ativo) {
-    // Implementar
+    : Exercicio(id, nome, ativo), carga(carga), series(series), repeticoes(repeticoes), tempoDescanso(tempoDescanso){
 }
 
 // Exibir detalhes do exercício
