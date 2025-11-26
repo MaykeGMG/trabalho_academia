@@ -6,7 +6,7 @@
 
 // Adicionar registro ao histórico
 void Historico::adicionarRegistro(const RegistroTreino& registro) {
-    // Implementar
+    registros.push_back(registro);
 }
 
 // Exibir histórico completo
