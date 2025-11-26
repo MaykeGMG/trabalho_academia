@@ -13,7 +13,7 @@ Cardio::Cardio(int id, std::string nome, bool ativo, int duracao, double caloria
 
 // Exibir detalhes do exercício
 void Cardio::exibirDetalhes() const {
-    std::cout << "Tipo: " << getTipo() << "\nNome: " << getNome() << "\nID do exercício: " << getId() << "\nStatus: " << isAtivo() << "\nDuração do exercício: " << getDuracao() << "\nEstimativa de calorias gastas por minuto: " << getCaloriasPorMinuto() << std::endl;
+    std::cout << "Tipo: " << getTipo() << "\nNome: " << getNome() << "\nID do exercício: " << getId() << "\nStatus: " << isAtivo() << "\nDuração do exercício: " << getDuracao() << "\nEstimativa de calorias gastas por minuto: " << getCaloriasPorMinuto() << std::endl << std::endl;
 }
 
 // Calcular tempo estimado (duração em minutos)

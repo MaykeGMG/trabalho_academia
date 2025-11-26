@@ -25,6 +25,7 @@ Sistema::~Sistema() {
 // Carregar dados dos arquivos
 void Sistema::carregarDados() {
     // Carregar exercicios.txt
+    
     // Carregar fichas.txt
     historico.carregarDeArquivo();
 }
@@ -32,7 +33,37 @@ void Sistema::carregarDados() {
 // Salvar dados nos arquivos
 void Sistema::salvarDados() {
     // Salvar exercicios.txt
+    std::ofstream arquivo_exercicios("exercicios.txt");
+    if (!arquivo_exercicios.is_open()){
+        std::cout << "Erro ao abrir arquivo exercicios.txt!" << std::endl;
+        return;
+    }
+
+    for (const Exercicio* exercicio : exercicios){
+
+        if(exercicio->getTipo() == 1){
+            Cardio* c = (Cardio*) exercicio;
+
+            arquivo_exercicios << c->getTipo() << ";" << c->getId() << ";" << c->getNome() << ";" << c->getDuracao() << ";" << c->getCaloriasPorMinuto();
+
+        }else{
+
+            Forca* f = (Forca*) exercicio;
+
+            arquivo_exercicios << f->getTipo() << ";" << f->getId() << ";" << f->getNome() << ";" << f->isAtivo() << ";" << f->getCarga() << ";" << f->getSeries() << ";" << f->getRepeticoes() << f->getTempoDescanso();
+        }
+    }
+
     // Salvar fichas.txt
+    std::ofstream arquivo_fichas("fichas.txt");
+    if (!arquivo_fichas.is_open()){
+        std::cout << "Erro ao abrir arquivo fichas.txt!" << std::endl;
+        return;
+    }
+
+    
+
+
     historico.salvarEmArquivo();
 }
 
@@ -55,11 +86,13 @@ Ficha* Sistema::buscarFichaPorId(int id) {
     for (Ficha* ficha : fichas){
 
         if (ficha->getId() == id){
+            pausar();
             return ficha;
         }
     }
 
     std::cout << "Ficha não encontrada ou inexistente!" << std::endl;
+    pausar();
     return nullptr;
 }
 
@@ -113,6 +146,7 @@ void Sistema::cadastrarExercicio() {
     }else{
         std::cout << "Valor informado não coresponde a um tipo de exercício!" << std::endl;
     }
+    pausar();
     
 
 }
@@ -126,6 +160,7 @@ void Sistema::listarExercicios() {
             e->exibirDetalhes();
         }
     }
+    pausar();
 }
 
 // Desativar exercício
@@ -139,8 +174,10 @@ void Sistema::excluirExercicio() {
 
         if(e->getId() == id ){
             e->desativar();
+            std::cout << "Exercicio desativado." << std::endl;
         }
     }
+    pausar();
 }
 
 // Criar nova ficha
@@ -152,6 +189,7 @@ void Sistema::criarFicha() {
 
     fichas.push_back(new Ficha(nome));
     std::cout << "Ficha " << nome << "criada com sucesso!" << std::endl;
+    pausar();
 }
 
 // Adicionar exercício à ficha
@@ -178,6 +216,7 @@ void Sistema::adicionarExercicioFicha() {
             break;
         }
     }
+    pausar();
 }
 
 // Listar todas as fichas
@@ -190,6 +229,7 @@ void Sistema::listarFichas() {
     }
 
     std::cout << "=================================\n" << std::endl;
+    pausar();
 }
 
 // Registrar treino realizado
@@ -211,11 +251,13 @@ void Sistema::registrarTreino() {
 
     historico.adicionarRegistro(registro);
 
-    std::cout << "Treino registrado no histórico!" << std::endl; 
+    std::cout << "Treino registrado no histórico!" << std::endl;
+    pausar();
 }
 
 // Exibir histórico de treinos
 void Sistema::exibirHistorico() {
 
     historico.exibirHistorico();
+    pausar();
 }
