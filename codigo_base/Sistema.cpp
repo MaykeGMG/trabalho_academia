@@ -112,7 +112,16 @@ void Sistema::listarExercicios() {
 
 // Desativar exercício
 void Sistema::excluirExercicio() {
-    // Implementar
+    
+    int id;
+    std::cout << "Informe o ID do exercício que deseja desatvar: ";
+    std::cin >> id;
+
+    for (auto e : exercicios){
+        if(e->getId() == id ){
+            e->desativar();
+        }
+    }
 }
 
 // Criar nova ficha
