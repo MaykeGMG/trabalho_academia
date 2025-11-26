@@ -210,9 +210,12 @@ void Sistema::registrarTreino() {
     };
 
     historico.adicionarRegistro(registro);
+
+    std::cout << "Treino registrado no histórico!" << std::endl; 
 }
 
 // Exibir histórico de treinos
 void Sistema::exibirHistorico() {
-    // Implementar
+
+    historico.exibirHistorico();
 }
