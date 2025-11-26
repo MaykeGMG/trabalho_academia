@@ -6,11 +6,16 @@ int Ficha::proximoId = 1;
 
 // Construtor para novos cadastros
 Ficha::Ficha(std::string nome) : nome(nome) {
+    this->id = proximoId++;
 }
 
 // Construtor para leitura de arquivo
-Ficha::Ficha(int id, std::string nome) {
-    // Implementar
+Ficha::Ficha(int id, std::string nome) : nome(nome){
+    this->id = id;
+
+    if (id >= proximoId) {
+        proximoId = id + 1;
+    }
 }
 
 // Destrutor (não deletar exercícios, apenas limpar vector)
