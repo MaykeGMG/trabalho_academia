@@ -117,7 +117,7 @@ void Sistema::excluirExercicio() {
     std::cout << "Informe o ID do exercício que deseja desatvar: ";
     std::cin >> id;
 
-    for (auto e : exercicios){
+    for (Exercicio* e : exercicios){
         if(e->getId() == id ){
             e->desativar();
         }
@@ -126,17 +126,39 @@ void Sistema::excluirExercicio() {
 
 // Criar nova ficha
 void Sistema::criarFicha() {
-    // Implementar
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     std::string nome;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     getline(std::cin, nome);
 
     fichas.push_back(new Ficha(nome));
+    std::cout << "Ficha " << nome << "criada com sucesso!" << std::endl;
 }
 
 // Adicionar exercício à ficha
 void Sistema::adicionarExercicioFicha() {
-    // Implementar
+
+    int idFicha, idExer;
+    std::cout << "Informe os ID's da ficha e do exercício respectivamente: ";
+    std::cin >> idFicha;
+    std::cin >> idExer;
+
+    for(Ficha* ficha : fichas){
+
+        if(ficha->getId() == idFicha){
+
+            for(Exercicio* exercicio : exercicios){
+
+                if(exercicio->getId() == idExer){
+
+                    ficha->adicionarExercicio(exercicio);
+                    std::cout << "Exercício adicionado à ficha " << ficha->getNome() << " com sucesso!" << std::endl;
+                    break;
+                }
+            }
+            break;
+        }
+    }
 }
 
 // Listar todas as fichas
