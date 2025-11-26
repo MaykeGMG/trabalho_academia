@@ -14,8 +14,12 @@ Sistema::Sistema() {
 Sistema::~Sistema() {
     salvarDados();
     // Deletar ponteiros de exercicios e fichas
-    for (auto p : exercicios)
+    for (auto p : exercicios){
         delete p;
+    }
+    for (auto f : fichas){
+        delete f;
+    }
 }
 
 // Carregar dados dos arquivos
