@@ -42,7 +42,56 @@ Ficha* Sistema::buscarFichaPorId(int id) {
 
 // Cadastrar novo exercício
 void Sistema::cadastrarExercicio() {
-    // Implementar
+    int tipo;
+
+    std::cout << "Tipo (1 - Cardio;  2 - Força): ";
+    std::cin >> tipo;
+
+    
+    if (tipo == 1){
+        std::string nome;
+        double duracao;
+        double calorias;
+
+        std::cout << "Nome do exercicio: ";
+        getline(std::cin, nome);
+
+        std::cout << "Duração do exercício: ";
+        std::cin >> duracao;
+
+        std::cout << "Calorias por minuto: ";
+        std::cin >> calorias;
+
+        exercicios.push_back(new Cardio(nome, duracao, calorias));
+
+    }else if (tipo == 2){
+        std::string nome;
+        double carga;
+        int series;
+        int repeticoes;
+        int tempoDescanso;
+
+        std::cout << "Nome do exercicio: ";
+        getline(std::cin, nome);
+
+        std::cout << "Carga do exercício: ";
+        std::cin >> carga;
+
+        std::cout << "Quantidade de séries: ";
+        std::cin >> series;
+
+        std::cout << "Quantidade de repetições: ";
+        std::cin >> repeticoes;
+
+        std::cout << "Tempo de descanso entre séries (em segundos): ";
+        std::cin >> tempoDescanso;
+
+        exercicios.push_back(new Forca (nome, carga, series, repeticoes, tempoDescanso));
+    }else{
+        std::cout << "Valor informado não coresponde a um tipo de exercício!" << std::endl;
+    }
+    
+
 }
 
 // Listar exercícios ativos
