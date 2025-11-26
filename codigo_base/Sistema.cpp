@@ -102,7 +102,12 @@ void Sistema::cadastrarExercicio() {
 
 // Listar exercícios ativos
 void Sistema::listarExercicios() {
-    // Implementar
+    
+    for (const auto e : exercicios){
+        if(e->isAtivo()){
+            e->exibirDetalhes();
+        }
+    }
 }
 
 // Desativar exercício
