@@ -164,6 +164,13 @@ void Sistema::adicionarExercicioFicha() {
 // Listar todas as fichas
 void Sistema::listarFichas() {
     // Implementar
+    std::cout << "======== Lista de Fichas ========" << std::endl;
+
+    for (Ficha* ficha : fichas){
+        ficha->exibirFicha();
+    }
+
+    std::cout << "=================================\n" << std::endl;
 }
 
 // Registrar treino realizado

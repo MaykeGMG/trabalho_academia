@@ -32,7 +32,7 @@ void Ficha::adicionarExercicio(Exercicio* exercicio) {
 // Exibir ficha completa com exercícios e totais
 void Ficha::exibirFicha() const {
 
-    std::cout << nome << ":\n";
+    std::cout <<"Ficha " << nome << ":\n";
 
     for (const auto& exercicio : exercicios){
         std::cout << exercicio->getNome() << std::endl;
