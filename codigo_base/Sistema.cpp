@@ -44,15 +44,17 @@ void Sistema::salvarDados() {
         if(exercicio->getTipo() == 1){
             Cardio* c = (Cardio*) exercicio;
 
-            arquivo_exercicios << c->getTipo() << ";" << c->getId() << ";" << c->getNome() << ";" << c->getDuracao() << ";" << c->getCaloriasPorMinuto();
+            arquivo_exercicios << c->getTipo() << ";" << c->getId() << ";" << c->getNome() << ";" << c->getDuracao() << ";" << c->getCaloriasPorMinuto() << "\n";
 
         }else{
 
             Forca* f = (Forca*) exercicio;
 
-            arquivo_exercicios << f->getTipo() << ";" << f->getId() << ";" << f->getNome() << ";" << f->isAtivo() << ";" << f->getCarga() << ";" << f->getSeries() << ";" << f->getRepeticoes() << f->getTempoDescanso();
+            arquivo_exercicios << f->getTipo() << ";" << f->getId() << ";" << f->getNome() << ";" << f->isAtivo() << ";" << f->getCarga() << ";" << f->getSeries() << ";" << f->getRepeticoes() << f->getTempoDescanso() << "\n";
         }
     }
+
+    arquivo_exercicios.close();
 
     // Salvar fichas.txt
     std::ofstream arquivo_fichas("fichas.txt");
@@ -61,8 +63,17 @@ void Sistema::salvarDados() {
         return;
     }
 
-    
+    for (const Ficha* ficha : fichas){
 
+        arquivo_fichas << ficha->getId() << ";" << ficha->getNome() << ";" << ficha->getExercicios().size();
+
+        for(const Exercicio* exercicio : ficha->getExercicios()){
+            arquivo_fichas << ";" << exercicio->getId();
+        }
+
+        arquivo_fichas << "\n";
+        arquivo_fichas.close();
+    }
 
     historico.salvarEmArquivo();
 }
