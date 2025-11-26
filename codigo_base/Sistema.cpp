@@ -38,7 +38,15 @@ void Sistema::salvarDados() {
 
 // Buscar exercício por ID
 Exercicio* Sistema::buscarExercicioPorId(int id) {
-    return nullptr; // Implementar
+    for (Exercicio* exercicio : exercicios){
+
+        if (exercicio->getId() == id){
+            return exercicio;
+        }
+    }
+
+    std::cout << "Exercício não encontrado ou inexistente!" << std::endl;
+    return nullptr;
 }
 
 // Buscar ficha por ID
@@ -53,7 +61,6 @@ Ficha* Sistema::buscarFichaPorId(int id) {
 
     std::cout << "Ficha não encontrada ou inexistente!" << std::endl;
     return nullptr;
-
 }
 
 // Cadastrar novo exercício
