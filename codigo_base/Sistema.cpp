@@ -52,7 +52,7 @@ void Sistema::cadastrarExercicio() {
 
     std::cout << "Tipo (1 - Cardio;  2 - Força): ";
     std::cin >> tipo;
-
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     
     if (tipo == 1){
         std::string nome;
