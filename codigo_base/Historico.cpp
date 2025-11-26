@@ -44,13 +44,13 @@ void Historico::carregarDeArquivo() {
 
         RegistroTreino temp;
 
-        getline(ss, temp.dataHora, '|');
-        getline(ss, token, '|');
+        getline(ss, temp.dataHora, ';');
+        getline(ss, token, ';');
         temp.idFicha = stoi(token);
-        getline(ss, temp.nomeFicha, '|');
-        getline(ss, token, '|');
+        getline(ss, temp.nomeFicha, ';');
+        getline(ss, token, ';');
         temp.tempoTotal = stod(token);
-        getline(ss, token, '|');
+        getline(ss, token, ';');
         temp.caloriasTotal = stod(token);
 
         registros.push_back(temp);
@@ -68,7 +68,7 @@ void Historico::salvarEmArquivo() const {
     }
 
     for (const RegistroTreino& registro : registros){
-        arquivo << registro.dataHora << "|" << registro.idFicha << "|" << registro.nomeFicha << "|" << registro.tempoTotal << "|" << registro.caloriasTotal << std::endl;
+        arquivo << registro.dataHora << ";" << registro.idFicha << ";" << registro.nomeFicha << ";" << registro.tempoTotal << ";" << registro.caloriasTotal << std::endl;
     }
 
     arquivo.close();
