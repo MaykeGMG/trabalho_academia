@@ -195,6 +195,21 @@ void Sistema::listarFichas() {
 // Registrar treino realizado
 void Sistema::registrarTreino() {
     // Implementar
+    int idFicha;
+    std::cout << "Informe o id da ficha: ";
+    std::cin >> idFicha;
+
+    Ficha* ficha = buscarFichaPorId(idFicha);
+    
+    RegistroTreino registro{
+        getDataHoraAtual(),
+        ficha->getId(), 
+        ficha->getNome(), 
+        ficha->calcularTempoTotal(), 
+        ficha->calcularCaloriasTotais()
+    };
+
+    historico.adicionarRegistro(registro);
 }
 
 // Exibir histórico de treinos
