@@ -61,5 +61,16 @@ void Historico::carregarDeArquivo() {
 
 // Salvar histórico no arquivo
 void Historico::salvarEmArquivo() const {
-    // Implementar
+    std::ofstream arquivo("historico.txt");
+    if (!arquivo.is_open()){
+        std::cout << "erro ao tentar ler arquivo!" << std::endl;
+        return;
+    }
+
+    for (const RegistroTreino& registro : registros){
+        arquivo << registro.dataHora << "|" << registro.idFicha << "|" << registro.nomeFicha << "|" << registro.tempoTotal << "|" << registro.caloriasTotal << std::endl;
+    }
+
+    arquivo.close();
+    std::cout << "Histórico salvo como sucesso!" << std::endl;
 }
