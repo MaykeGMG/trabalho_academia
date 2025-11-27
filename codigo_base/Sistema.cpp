@@ -25,8 +25,55 @@ Sistema::~Sistema() {
 // Carregar dados dos arquivos
 void Sistema::carregarDados() {
     // Carregar exercicios.txt
+    std::ifstream arquivo_exercicios("exercicios.txt");
+    if (!arquivo_exercicios.is_open()){
+        std::cout << "Erro ao abrir arquivo exercicios.txt!" << std::endl;
+        return;
+    }
+
+    std::string linha;
+    while (getline(arquivo_exercicios, linha)){
+        std::stringstream ss(linha);
+        std::string token;
+
+        getline(ss, token, ';');
+        int tipo = stoi(token);
+        if(tipo == 1){
+            int id, duracao;
+            std::string nome;
+            bool ativo;
+            double calorias;
+
+            getline(ss, token, ';');
+            id = stoi(token);
+
+            getline(ss, nome, ';');
+
+            getline(ss, token, ';');
+            duracao = stoi(token);
+
+            getline(ss, token, ';');
+            calorias = stod(token);
+
+            getline(ss, token);
+            ativo = (stoi(token) == 1) ? true : false;
+            
+            Cardio* cardio = new Cardio(id, nome, ativo, duracao, calorias);
+
+            exercicios.push_back(cardio);
+        }else if(tipo == 2){
+            int id, series, reps, descanso;
+            std::string nome;
+            double carga;
+            bool ativo;
+
+
+        }
+    }
     
     // Carregar fichas.txt
+
+
     historico.carregarDeArquivo();
 }
 
@@ -44,15 +91,17 @@ void Sistema::salvarDados() {
         if(exercicio->getTipo() == 1){
             Cardio* c = (Cardio*) exercicio;
 
-            arquivo_exercicios << c->getTipo() << ";" << c->getId() << ";" << c->getNome() << ";" << c->getDuracao() << ";" << c->getCaloriasPorMinuto() << "\n";
+            arquivo_exercicios << c->getTipo() << ";" << c->getId() << ";" << c->getNome() << ";" << c->getDuracao() << ";" << c->getCaloriasPorMinuto() << ";" << (c->isAtivo() ? 1 : 0) << "\n";
 
         }else{
 
             Forca* f = (Forca*) exercicio;
 
-            arquivo_exercicios << f->getTipo() << ";" << f->getId() << ";" << f->getNome() << ";" << f->isAtivo() << ";" << f->getCarga() << ";" << f->getSeries() << ";" << f->getRepeticoes() << f->getTempoDescanso() << "\n";
+            arquivo_exercicios << f->getTipo() << ";" << f->getId() << ";" << f->getNome() << ";" << f->getCarga() << ";" << f->getSeries() << ";" << f->getRepeticoes() << ";" << f->getTempoDescanso() << (f->isAtivo() ? 1 : 0) << "\n";
         }
     }
+
+    std::cout<< "Exercícios salvos com sucesso!" << std::endl;
 
     arquivo_exercicios.close();
 
@@ -72,8 +121,9 @@ void Sistema::salvarDados() {
         }
 
         arquivo_fichas << "\n";
-        arquivo_fichas.close();
     }
+    std::cout<< "Fichas salvas com sucesso!" << std::endl;
+    arquivo_fichas.close();
 
     historico.salvarEmArquivo();
 }
