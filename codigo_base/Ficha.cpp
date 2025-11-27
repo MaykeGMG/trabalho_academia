@@ -26,19 +26,18 @@ Ficha::~Ficha() {
 // Adicionar exercício à ficha
 void Ficha::adicionarExercicio(Exercicio* exercicio) {
     exercicios.push_back(exercicio);
-    std::cout << "exercicio adicionado à ficha de treino: " << exercicio->getNome() << std::endl;
 }
 
 // Exibir ficha completa com exercícios e totais
 void Ficha::exibirFicha() const {
 
-    std::cout <<"Ficha " << nome << ":\n";
+    std::cout <<"Ficha: " << nome << "\nID: " << id << "\n\n";
 
     for (const auto& exercicio : exercicios){
         std::cout << exercicio->getNome() << std::endl;
     }
 
-    std::cout << "Tempo estimado de execução do treino: " << calcularTempoTotal() << "\nEstimativa de calorias totais gastas no treino: " << calcularCaloriasTotais() << std::endl << std::endl;
+    std::cout << "\nTempo estimado de execução do treino: " << calcularTempoTotal() << " minutos\nEstimativa de calorias totais gastas no treino: " << calcularCaloriasTotais() << "Kcal" << std::endl << std::endl;
 }
 
 // Calcular tempo total da ficha

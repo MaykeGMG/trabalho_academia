@@ -171,7 +171,7 @@ void Sistema::salvarDados() {
         }
     }
 
-    std::cout<< "Exercícios salvos com sucesso!" << std::endl;
+    std::cout<< "\nExercícios salvos com sucesso!" << std::endl;
 
     arquivo_exercicios.close();
 
@@ -192,7 +192,7 @@ void Sistema::salvarDados() {
 
         arquivo_fichas << "\n";
     }
-    std::cout<< "Fichas salvas com sucesso!" << std::endl;
+    std::cout<< "\nFichas salvas com sucesso!" << std::endl << std::endl;
     arquivo_fichas.close();
 
     historico.salvarEmArquivo();
@@ -217,7 +217,6 @@ Ficha* Sistema::buscarFichaPorId(int id) {
     for (Ficha* ficha : fichas){
 
         if (ficha->getId() == id){
-            pausar();
             return ficha;
         }
     }
@@ -276,18 +275,22 @@ void Sistema::cadastrarExercicio() {
     }else{
         std::cout << "Valor informado não coresponde a um tipo de exercício!" << std::endl;
     }
+    pausar();
 
 }
 
 // Listar exercícios ativos
 void Sistema::listarExercicios() {
-    
+
+    std::cout << "================ Lista de Exercícios Disponíveis =================" << std::endl;
     for (const auto e : exercicios){
 
         if(e->isAtivo()){
             e->exibirDetalhes();
         }
+        std::cout << "-----------------------" << std::endl;
     }
+    std::cout << "==================================================================" << std::endl;
     pausar();
 }
 
@@ -305,6 +308,7 @@ void Sistema::excluirExercicio() {
             std::cout << "Exercicio desativado." << std::endl;
         }
     }
+    pausar();
 }
 
 // Criar nova ficha
@@ -312,10 +316,13 @@ void Sistema::criarFicha() {
 
     std::string nome;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "Informe o nome da ficha: ";
     getline(std::cin, nome);
 
     fichas.push_back(new Ficha(nome));
-    std::cout << "Ficha " << nome << " criada com sucesso!" << std::endl;
+    std::cout << "\nFicha " << nome << " criada com sucesso!" << std::endl;
+    pausar();
+
 }
 
 // Adicionar exercício à ficha
@@ -335,13 +342,14 @@ void Sistema::adicionarExercicioFicha() {
                 if(exercicio->getId() == idExer){
 
                     ficha->adicionarExercicio(exercicio);
-                    std::cout << "Exercício adicionado à ficha " << ficha->getNome() << " com sucesso!" << std::endl;
+                    std::cout << "\nExercício " << exercicio->getNome() << " adicionado à ficha " << ficha->getNome() << " com sucesso!" << std::endl;
                     break;
                 }
             }
             break;
         }
     }
+    pausar();
 }
 
 // Listar todas as fichas
@@ -351,6 +359,7 @@ void Sistema::listarFichas() {
 
     for (Ficha* ficha : fichas){
         ficha->exibirFicha();
+        std::cout << "-----------------------" << std::endl;
     }
 
     std::cout << "=================================\n" << std::endl;
@@ -377,6 +386,7 @@ void Sistema::registrarTreino() {
     historico.adicionarRegistro(registro);
 
     std::cout << "Treino registrado no histórico!" << std::endl;
+    pausar();
 }
 
 // Exibir histórico de treinos

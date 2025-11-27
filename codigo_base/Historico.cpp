@@ -11,10 +11,11 @@ void Historico::adicionarRegistro(const RegistroTreino& registro) {
 
 // Exibir histórico completo
 void Historico::exibirHistorico() const {
-    std::cout << "histórico de treino: " << std::endl;
+    std::cout << "=============== histórico de treinos ============== " << std::endl;
     for (const auto& registro : registros){
-        std::cout << registro.dataHora << " - " << registro.nomeFicha << "\nCalorias Gastas: " << registro.caloriasTotal << "KCal; Tempo: " << registro.tempoTotal << " minutos" << std::endl; 
+        std::cout << registro.dataHora << " - " << registro.nomeFicha << "\nCalorias Gastas: " << registro.caloriasTotal << "KCal; Tempo: " << registro.tempoTotal << " minutos" << std::endl << std::endl; 
     }
+    std::cout << "=================================================== " << std::endl;
 }
 
 // Getter de registros
