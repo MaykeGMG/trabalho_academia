@@ -223,7 +223,6 @@ Ficha* Sistema::buscarFichaPorId(int id) {
     }
 
     std::cout << "Ficha não encontrada ou inexistente!" << std::endl;
-    pausar();
     return nullptr;
 }
 
@@ -277,8 +276,6 @@ void Sistema::cadastrarExercicio() {
     }else{
         std::cout << "Valor informado não coresponde a um tipo de exercício!" << std::endl;
     }
-    pausar();
-    
 
 }
 
@@ -308,7 +305,6 @@ void Sistema::excluirExercicio() {
             std::cout << "Exercicio desativado." << std::endl;
         }
     }
-    pausar();
 }
 
 // Criar nova ficha
@@ -319,8 +315,7 @@ void Sistema::criarFicha() {
     getline(std::cin, nome);
 
     fichas.push_back(new Ficha(nome));
-    std::cout << "Ficha " << nome << "criada com sucesso!" << std::endl;
-    pausar();
+    std::cout << "Ficha " << nome << " criada com sucesso!" << std::endl;
 }
 
 // Adicionar exercício à ficha
@@ -347,7 +342,6 @@ void Sistema::adicionarExercicioFicha() {
             break;
         }
     }
-    pausar();
 }
 
 // Listar todas as fichas
@@ -383,7 +377,6 @@ void Sistema::registrarTreino() {
     historico.adicionarRegistro(registro);
 
     std::cout << "Treino registrado no histórico!" << std::endl;
-    pausar();
 }
 
 // Exibir histórico de treinos

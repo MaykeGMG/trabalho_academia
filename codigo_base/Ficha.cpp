@@ -38,7 +38,7 @@ void Ficha::exibirFicha() const {
         std::cout << exercicio->getNome() << std::endl;
     }
 
-    std::cout << "Tempo estimado de execução do treino: " << calcularTempoTotal() << " Estimativa de calorias totais gastas no treino: " << calcularCaloriasTotais() << std::endl;
+    std::cout << "Tempo estimado de execução do treino: " << calcularTempoTotal() << "\nEstimativa de calorias totais gastas no treino: " << calcularCaloriasTotais() << std::endl << std::endl;
 }
 
 // Calcular tempo total da ficha
