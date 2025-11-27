@@ -99,11 +99,51 @@ void Sistema::carregarDados() {
             std::cout << "Erro ao carregar arquivos!" << std::endl;
         }
     }
+    arquivo_exercicios.close();
     
     // Carregar fichas.txt
 
-    
+    std::ifstream arquivo_fichas("fichas.txt");
+    if (!arquivo_fichas.is_open()){
+        std::cout << "Erro ao abrir arquivo fichas.txt!" << std::endl;
+        return;
+    }
 
+    std::string linha;
+
+    while (getline(arquivo_fichas,linha)){
+        
+        std::stringstream ss(linha);
+        std::string token;
+
+        int id, qtdExerc, idExerc;
+        std::string nome;
+
+        getline(ss, token, ';');
+        id = stoi(token);
+
+        getline(ss, nome, ';');
+
+        getline(ss, token, ';');
+        qtdExerc = stoi(token);
+
+        Ficha* ficha = new Ficha(id, nome);
+        fichas.push_back(ficha);
+
+        for (int i = 0; i<qtdExerc; i++){
+
+            getline(ss, token, ';');
+            idExerc = stoi(token);
+
+            for (Exercicio* exercicio : exercicios){
+                if (idExerc == exercicio->getId()){
+                    ficha->adicionarExercicio(exercicio);
+                    break;
+                }
+            }
+        }
+    }
+    arquivo_fichas.close();
 
     historico.carregarDeArquivo();
 }
