@@ -24,7 +24,9 @@ Sistema::~Sistema() {
 
 // Carregar dados dos arquivos
 void Sistema::carregarDados() {
+
     // Carregar exercicios.txt
+
     std::ifstream arquivo_exercicios("exercicios.txt");
     if (!arquivo_exercicios.is_open()){
         std::cout << "Erro ao abrir arquivo exercicios.txt!" << std::endl;
@@ -32,13 +34,16 @@ void Sistema::carregarDados() {
     }
 
     std::string linha;
+
     while (getline(arquivo_exercicios, linha)){
         std::stringstream ss(linha);
         std::string token;
 
         getline(ss, token, ';');
         int tipo = stoi(token);
+
         if(tipo == 1){
+
             int id, duracao;
             std::string nome;
             bool ativo;
@@ -61,17 +66,43 @@ void Sistema::carregarDados() {
             Cardio* cardio = new Cardio(id, nome, ativo, duracao, calorias);
 
             exercicios.push_back(cardio);
+
         }else if(tipo == 2){
+
             int id, series, reps, descanso;
             std::string nome;
             double carga;
             bool ativo;
 
+            getline(ss, token, ';');
+            id = stoi(token);
 
+            getline(ss, nome, ';');
+
+            getline(ss, token, ';');
+            carga = stod(token);
+
+            getline(ss, token, ';');
+            series = stoi(token);
+
+            getline(ss, token, ';');
+            reps = stoi(token);
+
+            getline(ss, token, ';');
+            descanso = stoi(token);
+
+            getline(ss, token);
+            ativo = (stoi(token) == 1) ? true : false;
+
+            Forca* forca = new Forca(id, nome, ativo, carga, series, reps, descanso);
+        }else{
+            std::cout << "Erro ao carregar arquivos!" << std::endl;
         }
     }
     
     // Carregar fichas.txt
+
+    
 
 
     historico.carregarDeArquivo();
