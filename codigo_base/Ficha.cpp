@@ -75,13 +75,7 @@ std::string Ficha::getNome() const {
 }
 
 const std::vector<Exercicio*>& Ficha::getExercicios() const {
-    static std::vector<Exercicio*> vazio; // Placeholder para compilar
-
-    for (const auto& exercicio : exercicios){
-        vazio.push_back(exercicio);
-    }
-
-    return vazio;
+    return exercicios;
 }
 
 // Atualizar próximo ID

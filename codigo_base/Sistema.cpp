@@ -35,7 +35,7 @@ void Sistema::carregarDados() {
 
     std::string linha;
 
-    while (getline(arquivo_exercicios, linha)){
+    while (getline(arquivo_exercicios, linha)){ 
         std::stringstream ss(linha);
         std::string token;
 
@@ -95,6 +95,7 @@ void Sistema::carregarDados() {
             ativo = (stoi(token) == 1) ? true : false;
 
             Forca* forca = new Forca(id, nome, ativo, carga, series, reps, descanso);
+            exercicios.push_back(forca);
         }else{
             std::cout << "Erro ao carregar arquivos!" << std::endl;
         }
@@ -108,8 +109,6 @@ void Sistema::carregarDados() {
         std::cout << "Erro ao abrir arquivo fichas.txt!" << std::endl;
         return;
     }
-
-    std::string linha;
 
     while (getline(arquivo_fichas,linha)){
         
@@ -168,7 +167,7 @@ void Sistema::salvarDados() {
 
             Forca* f = (Forca*) exercicio;
 
-            arquivo_exercicios << f->getTipo() << ";" << f->getId() << ";" << f->getNome() << ";" << f->getCarga() << ";" << f->getSeries() << ";" << f->getRepeticoes() << ";" << f->getTempoDescanso() << (f->isAtivo() ? 1 : 0) << "\n";
+            arquivo_exercicios << f->getTipo() << ";" << f->getId() << ";" << f->getNome() << ";" << f->getCarga() << ";" << f->getSeries() << ";" << f->getRepeticoes() << ";" << f->getTempoDescanso() << ";" << (f->isAtivo() ? 1 : 0) << "\n";
         }
     }
 
